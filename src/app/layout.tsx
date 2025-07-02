@@ -4,8 +4,8 @@ import Navbar from "./compoenent/navbar";
 import Banner from "./compoenent/banner";
 
 export const metadata: Metadata = {
-  title: "Fee 499 - USTPO",
-  description: "Built with Next.js 14, TypeScript & Tailwind CSS",
+  title: "Fee 499 - USPTO",
+  description: "https://trademarkofficial.vercel.app/",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
