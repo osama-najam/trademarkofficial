@@ -8,56 +8,58 @@ export default function Navbar() {
   return (
     <header className="w-full">
       {/* 🔹 Top Info Bar */}
-      <div className="bg-white h-[19px] flex items-center px-4 sm:px-6 lg:px-8 border-b border-gray-200 text-xs text-black">
-        <span className="flex items-center gap-2">
-          <Flag code="US" style={{ width: 24, height: 16 }} />
+      <div className="bg-white h-[19px] flex items-center px-4 sm:px-6 lg:px-8 border-b border-gray-200 text-[10px] sm:text-xs text-black">
+        <span className="flex items-center gap-1 sm:gap-2">
+          <Flag code="US" style={{ width: 20, height: 14 }} />
           <span>An Official Website Of The United States Government</span>
         </span>
       </div>
 
       {/* 🔸 Main Navbar */}
-      <div className="bg-[#838383] h-[125px] flex items-center justify-center">
+      <div className="bg-[#838383] py-4 md:py-0 flex items-center justify-center">
         {/* 🎯 Inner Dark Box */}
-        <div className="bg-[#333333] w-[1077px] h-[125px] flex justify-between items-center px-6">
-          {/* 🔹 Left: Logo */}
-          <div className="flex-shrink-0">
+        <div className="bg-[#333333] w-full max-w-[1077px] flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 md:px-8 h-auto md:h-[125px] gap-4 md:gap-0">
+          
+          {/* 🔹 Logo */}
+          <div className="flex-shrink-0 max-w-[180px] md:max-w-[300px]">
             <Image
-              src="/logo.png" // ⬅️ make sure this is in your public/ folder
+              src="/logo.png"
               alt="Logo"
               width={500}
               height={300}
-              className="object-contain"
+              className="object-contain w-full h-auto"
             />
           </div>
 
-          {/* 🔸 Right: Links Top & Search Bottom */}
-          <div className="flex flex-col justify-between h-full py-4">
+          {/* 🔸 Right Side (Links + Search) */}
+          <div className="w-full md:w-auto flex flex-col justify-center md:justify-between items-end h-full gap-4 py-2 md:py-4">
+            
             {/* Links */}
-            <div className="flex justify-end gap-6 text-sm">
-              <Link href="#" className="hover:underline text-white">About Us</Link>
-              <h1 text-black>|</h1>
-              <Link href="#" className="hover:underline text-white">Jobs</Link>
-              |
-              <Link href="#" className="hover:underline text-white">Contact Us</Link>
-              |
-              <Link href="#" className="hover:underline text-white">MyUSPTO</Link>
+            <div className="flex flex-wrap justify-end gap-3 text-xs sm:text-sm text-white">
+              <Link href="#" className="hover:underline">About Us</Link>
+              <span className="hidden sm:inline">|</span>
+              <Link href="#" className="hover:underline">Jobs</Link>
+              <span className="hidden sm:inline">|</span>
+              <Link href="#" className="hover:underline">Contact Us</Link>
+              <span className="hidden sm:inline">|</span>
+              <Link href="#" className="hover:underline">MyUSPTO</Link>
             </div>
-        {/* Search Bar with Button inside input */}
-            <div className="flex justify-end">
-            <div className="relative w-[430px]">
-                <input
+
+            {/* Search */}
+            <div className="w-full sm:w-[300px] md:w-[430px] relative">
+              <input
                 type="text"
                 placeholder="search uspto.gov"
-                className="px-3 py-3 text-sm bg-gray-200 text-black placeholder-black w-full"
-                />
-                <button
+                className="w-full px-3 py-2 sm:py-3 text-sm bg-gray-200 text-black placeholder-black"
+              />
+              <button
                 type="submit"
-                className="absolute right-0 top-1/2 -translate-y-1/2 w-[50px] h-[45px] bg-[#0076A3] flex items-center justify-center hover:bg-[#005f84] transition"
-                >
-                <FaSearch className="text-white" />
-                </button>
+                className="absolute right-0 top-1/2 -translate-y-1/2 w-[45px] sm:w-[50px] h-[40px] sm:h-[45px] bg-[#0076A3] flex items-center justify-center hover:bg-[#005f84] transition"
+              >
+                <FaSearch className="text-white text-sm sm:text-base" />
+              </button>
             </div>
-            </div>
+
           </div>
         </div>
       </div>
