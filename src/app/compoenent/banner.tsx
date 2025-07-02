@@ -1,17 +1,35 @@
 "use client";
 import Link from "next/link";
 import { FaSearch } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Banner() {
   const [isFastMenuOpen, setIsFastMenuOpen] = useState(false);
+  const fastMenuRef = useRef<HTMLDivElement | null>(null);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        fastMenuRef.current &&
+        !fastMenuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setIsFastMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="w-full bg-[#EEEEEE] text-[#0071A2]">
-      <div className="max-w-[1077px] mx-auto flex items-center justify-between h-[55px] px-4 md:px-6 relative z-10">
+      <div className="max-w-[1077px] mx-auto flex items-center h-[55px] px-4 md:px-6 relative z-10">
         {/* Left Navigation */}
         <div className="hidden lg:flex gap-4 xl:gap-6 text-sm xl:text-lg font-medium relative">
-          {/* Dropdowns */}
           {[
             {
               title: "Patents",
@@ -212,15 +230,24 @@ export default function Banner() {
             },
           ].map((item, index) => (
             <div key={index} className="relative group">
-              <Link href="#" className="hover:text-red-500 pr-4 border-r border-gray-300">
+              <Link
+                href="#"
+                className="hover:text-red-500 pr-4 border-r border-gray-300"
+              >
                 {item.title}
               </Link>
               <div className="absolute left-0 top-full mt-2 hidden group-hover:flex bg-white shadow-xl rounded-md p-4 lg:p-6 z-20 w-[90vw] lg:w-[800px] gap-6 flex-wrap">
                 {item.sections.map((section, idx) => (
                   <div key={idx} className="min-w-[150px] flex flex-col gap-1">
-                    <span className="font-semibold text-[#0071A2]">{section.heading}</span>
+                    <span className="font-semibold text-[#0071A2]">
+                      {section.heading}
+                    </span>
                     {section.links.map((link, i) => (
-                      <Link key={i} href="#" className="text-[#0071A2] hover:text-red-500 text-sm">
+                      <Link
+                        key={i}
+                        href="#"
+                        className="text-[#0071A2] hover:text-red-500 text-sm"
+                      >
                         {link}
                       </Link>
                     ))}
@@ -232,18 +259,29 @@ export default function Banner() {
         </div>
 
         {/* Right: Find it Fast Button */}
-        <div
-          className="relative"
-          onMouseEnter={() => setIsFastMenuOpen(true)}
-          onMouseLeave={() => setIsFastMenuOpen(false)}
-        >
-          <button className="bg-[#0076A3] text-white px-3 py-1.5 md:px-4 md:py-2 rounded-md text-sm font-medium flex items-center gap-2 hover:bg-[#005f84] transition">
+        <div className="relative ml-auto">
+          <button
+            ref={buttonRef}
+            onClick={() => setIsFastMenuOpen((prev) => !prev)}
+            className="bg-[#0076A3] text-white px-3 py-1.5 md:px-4 md:py-2 rounded-md text-sm font-medium flex items-center gap-2 hover:bg-[#005f84] transition"
+          >
             <FaSearch />
             <span className="hidden sm:inline">Find it Fast</span>
           </button>
 
           {isFastMenuOpen && (
-            <div className="absolute right-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 md:p-6 z-20 w-[90vw] md:w-[900px] grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-10 text-sm text-gray-700">
+            <div
+              ref={fastMenuRef}
+              className="absolute right-0 top-full mt-2 bg-white shadow-lg rounded-md p-4 md:p-6 z-20 w-[90vw] md:w-[900px] grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-10 text-sm text-gray-700"
+            >
+              {/* Optional close button (visible mostly on mobile) */}
+              <button
+                className="absolute top-2 right-3 text-gray-500 hover:text-red-600 text-lg font-bold"
+                onClick={() => setIsFastMenuOpen(false)}
+              >
+                &times;
+              </button>
+
               <div className="flex flex-col gap-2">
                 <span className="font-semibold text-[#0071A2]">Patents</span>
                 <Link href="#">Patent Public Search</Link>
