@@ -21,7 +21,7 @@ export default function Navbar() {
         <div className="bg-[#333333] w-full max-w-[1077px] flex flex-col md:flex-row justify-between items-center px-4 sm:px-6 md:px-8 h-auto md:h-[125px] gap-4 md:gap-0">
           
           {/* 🔹 Logo */}
-          <div className="flex-shrink-0 max-w-[180px] md:max-w-[300px]">
+          <div className="flex-shrink-0 max-w-[180px] lg:max-w-[500px] md:max-w-[400px] sm:max-w-[180px]">
             <Image
               src="/logo.png"
               alt="Logo"
