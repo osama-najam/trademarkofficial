@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PaymentSection from "./compoenent/paymentsection";
 import UspFooter from "./compoenent/upfooter";
 import Footer from "./compoenent/footer";
