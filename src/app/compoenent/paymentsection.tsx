@@ -33,7 +33,7 @@ export default function PaymentSection() {
           />
 
           <Link
-            href="https://www.paypal.com/ncp/payment/ZVLMGGQ2JTXF6"
+            href="https://buy.stripe.com/7sY3cn0HSbp1ao648ifYY02"
             target="_blank"
             className="bg-[#0071A2] hover:bg-red-500 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition"
           >
@@ -44,3 +44,4 @@ export default function PaymentSection() {
     </section>
   );
 }
+
