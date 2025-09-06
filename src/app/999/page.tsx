@@ -9,8 +9,9 @@ export default function Page() {
   return (
     <PaymentSection
       invoiceImage="/Invoice-999.jpg"
-      paymentLink="https://buy.stripe.com/3cI9AS49C1isaCDa2W53O00" // apna stripe link yahan dal
+      paymentLink="https://buy.stripe.com/5kAdUDfoUalnehGeUU" // apna stripe link yahan dal
     />
   );
 }
+
 
