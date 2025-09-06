@@ -19,7 +19,7 @@ export default function PaymentSection({
         <div className="w-full md:w-1/2 flex justify-center">
           <Image
             src={invoiceImage}
-            alt={`Invoice ${amount}`}
+            alt={`Invoice`}
             width={400}
             height={300}
             className="shadow-md object-contain max-w-full h-auto"
@@ -52,4 +52,5 @@ export default function PaymentSection({
     </section>
   );
 }
+
 
