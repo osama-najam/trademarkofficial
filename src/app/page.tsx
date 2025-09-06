@@ -5,7 +5,6 @@ import Footer from "./compoenent/footer";
 export default function Home() {
   return (
   <div>
-    <PaymentSection/>
     <UspFooter/>
     <Footer/>
   </div>
