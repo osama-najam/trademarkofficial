@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface PaymentSectionProps {
-  amount: number;
   invoiceImage: string;
   paymentLink: string;
 }
@@ -46,10 +45,11 @@ export default function PaymentSection({
             target="_blank"
             className="bg-[#0071A2] hover:bg-red-500 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition"
           >
-            Pay ${amount}
+            Pay Now
           </Link>
         </div>
       </div>
     </section>
   );
 }
+
