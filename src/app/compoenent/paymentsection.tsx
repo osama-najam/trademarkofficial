@@ -8,7 +8,6 @@ interface PaymentSectionProps {
 }
 
 export default function PaymentSection({
-  amount,
   invoiceImage,
   paymentLink,
 }: PaymentSectionProps) {
@@ -52,5 +51,6 @@ export default function PaymentSection({
     </section>
   );
 }
+
 
 
