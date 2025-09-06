@@ -2,16 +2,25 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function PaymentSection() {
+interface PaymentSectionProps {
+  amount: number;
+  invoiceImage: string;
+  paymentLink: string;
+}
+
+export default function PaymentSection({
+  amount,
+  invoiceImage,
+  paymentLink,
+}: PaymentSectionProps) {
   return (
     <section className="w-full py-10 px-4 flex justify-center">
       <div className="max-w-6xl w-full flex flex-col md:flex-row items-center gap-10">
-        
         {/* 🖼 Left Side Image */}
         <div className="w-full md:w-1/2 flex justify-center">
           <Image
-            src="/Invoice-499.png"
-            alt="Payment Illustration"
+            src={invoiceImage}
+            alt={`Invoice ${amount}`}
             width={400}
             height={300}
             className="shadow-md object-contain max-w-full h-auto"
@@ -33,15 +42,14 @@ export default function PaymentSection() {
           />
 
           <Link
-            href="https://buy.stripe.com/7sY3cn0HSbp1ao648ifYY02"
+            href={paymentLink}
             target="_blank"
             className="bg-[#0071A2] hover:bg-red-500 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition"
           >
-            Pay Now
+            Pay ${amount}
           </Link>
         </div>
       </div>
     </section>
   );
 }
-
